@@ -108,8 +108,9 @@ app.post('/webhook', function(req, res, next) {
         }
 
         msg = messages[0];
-    } else {
+    } else { //if it is a postback
         msg = req.body.postbacks[0];
+        //auto convert postbacks as per a normal message
         msg.text = msg.action.text;
     }
 
