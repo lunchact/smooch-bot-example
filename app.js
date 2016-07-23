@@ -9,7 +9,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 
-app.use('/views', express.static('public'));
+//serve static files in views folder
+app.use(express.static('views'));
 
 app.get('/', function(req, res) {
     res.render('index', {
