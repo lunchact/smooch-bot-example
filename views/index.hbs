@@ -56,10 +56,7 @@
       	appToken: '{{appToken}}',
         embedded: true,
       	emailCaptureEnabled: true,
-      	})
-    /* -- Render Smooch in full screen -- */
-    var myContainer = document.getElementsByClassName("full-screen-msg");
-    Smooch.render(myContainer[0])
+      	});
 
     </script>
     <script>
@@ -67,15 +64,13 @@
       var mainContainer = document.getElementById('mainContainer');
       var fullScreenChat = document.getElementById("fullScreenChat");
 
-      function openchat() {
-
         /* -- Hiding the main container -- */
         mainContainer.style.display = 'none'
 
         /* -- Displaying the main container -- */
         fullScreenChat.style.display = 'block'
         Smooch.render(fullScreenChat);
-      };
+
     </script>
 
     <script>
