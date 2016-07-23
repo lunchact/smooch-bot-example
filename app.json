@@ -3,7 +3,7 @@
   "description": "Smooch Bot example using Express",
   "keywords": ["smooch", "bot", "express"],
   "website": "https://smooch.io",
-  "repository": "https://github.com/smooch/smooch-bot-example",
+  "repository": "https://github.com/lunchact/smooch-bot-example",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
   "env": {
     "SMOOCH_APP_TOKEN": {
