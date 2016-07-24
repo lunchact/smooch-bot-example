@@ -147,8 +147,7 @@ module.exports = new Script({
     finish: {
         receive: (bot, message) => {
             return bot.getProp('name')
-                .then((name) => bot.say(`Nice chatting with you ${name}, ` +
-                        'have a good day!'))
+                .then((name) => bot.say('Nice chatting with you, this is my limit at this moment! Have a good day!'))
                 .then(() => 'finish');
         }
     }
