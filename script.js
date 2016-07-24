@@ -65,7 +65,7 @@ module.exports = new Script({
             const txt = message.text;
             switch (txt) {
                 case "postcomment1":
-                    return bot.say()
+                    return bot.say('')
                         .then(() => 'getComment');
                 case "sendfeedback1":
                     return bot.say('Great! We’d love to hear from you!')
