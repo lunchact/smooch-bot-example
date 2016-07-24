@@ -44,19 +44,51 @@ module.exports = new Script({
         }
     },
 
+    morecake2: {
+        prompt: (bot) => bot.say('%[More](postback:more2) %[Something else](postback:somethingelse2)'),
+        receive: (bot, message) => {
+            const txt = message.text;
+            switch (txt) {
+                case "more2": //postback reply
+                    return bot.say('![](http://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1043451_11.jpg)')
+                        .then(() => 'morecake2');
+                case "somethingelse2": //postback reply
+                    return bot.say('OK. What do you want to do?')
+                        .then(() => 'something1');
+            }
+        }
+    },
+
     something1: {
         prompt: (bot) => bot.say('%[Post a comment](postback:postcomment1) %[Send us feedback](postback:sendfeedback1)'),
         receive: (bot, message) => {
             const txt = message.text;
             switch (txt) {
                 case "postcomment1":
-                    //postcomment reply action here
+                    return bot.say('Ok! You can send it here')
+                        .then(() => 'thanksComment');
                 case "sendfeedback1":
                     return bot.say('Great! We’d love to hear from you!')
                         .then(() => 'askName');
             }
         }
     },
+
+    thanksComment: {
+        prompt: (bot) => bot.say('Thanks for the comment! Now what? Do you want more cake?\n %[Yes, cake is awesome!](postback:awesome2) %[No, I\'m good](postback:imgood2)'),
+        receive: (bot, message) => {
+            const txt = message.text;
+            switch (txt) {
+                case "awesome2":
+                    return bot.say('![](http://www.taste.com.au/images/recipes/sfi/2011/08/27867_l.jpg)')
+                        .then(() => 'morecake2');
+                case "imgood2":
+                    return bot.say('Awe, that’s it for today. See you next time! There’s gonna be more cake!!!')
+                        .then(() => 'finish');
+            }
+        }
+    },
+
 
     askName: {
         prompt: (bot) => bot.say('What\'s your name?'),
@@ -89,15 +121,16 @@ module.exports = new Script({
     },
 
     showMorePhotos: {
-        prompt: (bot) => bot.say('%[Yes, cake is awesome!](postback:awesome) %[No, I\'m good](postback:imgood)'),
+        prompt: (bot) => bot.say('Would you like to see more photos?\n %[Yes, cake is awesome!](postback:awesome) %[No, I\'m good](postback:imgood)'),
         receive: (bot, message) => {
             const txt = message.text;
             switch (txt) {
                 case "awesome":
                     return bot.say('![](http://www.bbcgoodfood.com/sites/default/files/chocolate-avocado-cake.jpg)')
-                        .then(() => 'morecake1');
+                        .then(() => 'morecake2');
                 case "imgood":
-                    //postcomment reply action here
+                    return bot.say('Awe, that’s it for today. See you next time! There’s gonna be more cake!!!')
+                        .then(() => 'finish');
             }
         }
     },
@@ -105,8 +138,8 @@ module.exports = new Script({
     finish: {
         receive: (bot, message) => {
             return bot.getProp('name')
-                .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
-                        'teach me how to do anything else!'))
+                .then((name) => bot.say(`Nice chatting with you ${name}, ` +
+                        'have a good day!'))
                 .then(() => 'finish');
         }
     }
