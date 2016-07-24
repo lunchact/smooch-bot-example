@@ -139,16 +139,16 @@ module.exports = new Script({
                         .then(() => 'morecake2');
                 case "imgood":
                     return bot.say('Awe, that’s it for today. See you next time! There’s gonna be more cake!!!')
-                        .then(() => 'showMorePhotos');
+                        .then(() => 'start');
             }
         }
-    },
+    }
 
-    finish: {
+    /*finish: {
         receive: (bot, message) => {
             return bot.getProp('name')
                 .then((name) => bot.say('Nice chatting with you, this is my limit at this moment! Have a good day!'))
                 .then(() => 'finish');
         }
-    }
+    }*/
 });
