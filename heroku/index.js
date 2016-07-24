@@ -154,6 +154,7 @@ app.post('/webhook', function(req, res, next) {
     }
 });
 */
+
 app.post('/webhook', function(req, res, next) {
     var isPostback = req.body.trigger == "postback";
     var msg = '';
@@ -186,7 +187,7 @@ app.post('/webhook', function(req, res, next) {
         msg = messages[0];
     } else {
         msg = req.body.postbacks[0];
-        msg.text = msg.action.text;
+        msg.text = msg.action.payload;
     }
 
     stateMachine.receiveMessage(msg)

@@ -18,18 +18,13 @@ module.exports = new Script({
     askToDo: {
         prompt: (bot) => bot.say('What would you like to do today? %[Post a picture](postback:postpic1) %[See some cakes](postback:seecake1)'),
         receive: (bot, message) => {
-            const name = message.text;
-            return bot.setProp('name', name)
-                .then(() => bot.say(`Great! I'll call you ${name}
-Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
-                .then(() => 'finish');
-        }
-    },
-
-    seecake1: {
-        receive: (bot) => {
-            return bot.say('![](https://raw.githubusercontent.com/esthercrawford/smooch-bot-example/master/img/esther.jpg)')
-                .then(() => 'morecake1');
+            const txt = message.text;
+            switch (txt) {
+                case "postpic1":
+                case "seecake1":
+                    return bot.say('![](https://raw.githubusercontent.com/esthercrawford/smooch-bot-example/master/img/esther.jpg)')
+                        .then(() => 'morecake1');
+            }
         }
     },
 
