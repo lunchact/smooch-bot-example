@@ -139,7 +139,7 @@ module.exports = new Script({
                         .then(() => 'morecake2');
                 case "imgood":
                     return bot.say('Awe, that’s it for today. See you next time! There’s gonna be more cake!!!')
-                        .then(() => 'finish');
+                        .then(() => 'showMorePhotos');
             }
         }
     },
