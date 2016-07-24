@@ -112,21 +112,45 @@ function handlePostback(req, res) {
         res.end();
     }
 
-    /*createBot(req.body.appUser).say(`You said: ${postback.action.text} (payload was: ${postback.action.payload})`)
-        .then(() => res.end());*/
-    //Martti: send postback reply action payload as a text to bot - manage in script.js
+    createBot(req.body.appUser).say(`You said: ${postback.action.text} (payload was: ${postback.action.payload})`)
+        .then(() => res.end());
+}
+
+//Martti: handle postback payloads as a normal message 
+function handlePostbackAndMessages(req, res) {
+    var msg = '';
+
+    const postback = req.body.postbacks[0];
+    if (!postback || !postback.action) {
+        const messages = req.body.messages.reduce((prev, current) => {
+            if (current.role === 'appUser') {
+                prev.push(current);
+            }
+            return prev;
+        }, []);
+
+        if (messages.length === 0) {
+            return res.end();
+        }
+        msg = messages[0];
+    } else {
+        msg = req.body.postbacks[0];
+        msg.text = msg.action.payload;
+    }
+
     const stateMachine = new StateMachine({
         script,
         bot: createBot(req.body.appUser)
     });
 
-    stateMachine.receiveMessage(postback.action.payload)
+    stateMachine.receiveMessage(msg)
         .then(() => res.end())
         .catch((err) => {
             console.error('SmoochBot error:', err);
             console.error(err.stack);
             res.end();
         });
+
 }
 
 app.post('/webhook', function(req, res, next) {
@@ -134,12 +158,13 @@ app.post('/webhook', function(req, res, next) {
 
     switch (trigger) {
         case 'message:appUser':
-            handleMessages(req, res);
+        case 'postback': //Martti: let be postbacks received and handled as normal messages to bot
+            handlePostbackAndMessages(req, res);
             break;
 
-        case 'postback':
+        /*case 'postback':
             handlePostback(req, res);
-            break;
+            break;*/
 
         default:
             console.log('Ignoring unknown webhook trigger:', trigger);
