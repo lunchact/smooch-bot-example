@@ -112,8 +112,21 @@ function handlePostback(req, res) {
         res.end();
     }
 
-    createBot(req.body.appUser).say(`You said: ${postback.action.text} (payload was: ${postback.action.payload})`)
-        .then(() => res.end());
+    /*createBot(req.body.appUser).say(`You said: ${postback.action.text} (payload was: ${postback.action.payload})`)
+        .then(() => res.end());*/
+    //Martti: send postback reply action payload as a text to bot - manage in script.js
+    const stateMachine = new StateMachine({
+        script,
+        bot: createBot(req.body.appUser)
+    });
+
+    stateMachine.receiveMessage(postback.action.payload)
+        .then(() => res.end())
+        .catch((err) => {
+            console.error('SmoochBot error:', err);
+            console.error(err.stack);
+            res.end();
+        });
 }
 
 app.post('/webhook', function(req, res, next) {
