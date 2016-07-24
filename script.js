@@ -23,7 +23,7 @@ module.exports = new Script({
                 case "postpic1":
                     //put action here for postpic1 if there is any
                 case "seecake1":
-                    return bot.say('![](https://raw.githubusercontent.com/esthercrawford/smooch-bot-example/master/img/esther.jpg)')
+                    return bot.say('![](http://www.fnstatic.co.uk/images/source/article/omg-chocolate-cake-1_2.jpg)')
                         .then(() => 'morecake1');
             }
         }
@@ -35,7 +35,7 @@ module.exports = new Script({
             const txt = message.text;
             switch (txt) {
                 case "more1": //postback reply
-                    return bot.say('![](https://raw.githubusercontent.com/esthercrawford/smooch-bot-example/master/img/esther.jpg)')
+                    return bot.say('![](http://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1043451_11.jpg)')
                         .then(() => 'morecake1');
                 case "somethingelse1": //postback reply
                     return bot.say('OK. What do you want to do?')
@@ -94,7 +94,7 @@ module.exports = new Script({
             const txt = message.text;
             switch (txt) {
                 case "awesome":
-                    return bot.say('![](https://raw.githubusercontent.com/esthercrawford/smooch-bot-example/master/img/esther.jpg)')
+                    return bot.say('![](http://www.bbcgoodfood.com/sites/default/files/chocolate-avocado-cake.jpg)')
                         .then(() => 'morecake1');
                 case "imgood":
                     //postcomment reply action here
