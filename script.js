@@ -65,7 +65,8 @@ module.exports = new Script({
             const txt = message.text;
             switch (txt) {
                 case "postcomment1":
-                    return bot.then(() => 'getComment');
+                    return bot.say('Ok!') 
+                        .then(() => 'getComment');
                 case "sendfeedback1":
                     return bot.say('Great! We’d love to hear from you!')
                         .then(() => 'askName');
@@ -74,7 +75,7 @@ module.exports = new Script({
     },
 
     getComment: {
-        prompt: (bot) => bot.say('Ok! You can send it here'),
+        prompt: (bot) => bot.say('You can send it here'),
         receive: (bot, message) => {
             const comment = message.text;
             return bot.setProp('comment', comment)
