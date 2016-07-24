@@ -10,7 +10,8 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say('Hello, welcome to CatBots.lol \n What would you like to do today? %[Post a picture](postback:postpic1) %[See some cakes](postback:seecake1)');
+            return bot.say('Hello, welcome to CatBots.lol \n What would you like to do today? %[Post a picture](postback:postpic1) %[See some cakes](postback:seecake1)')
+                .then();
         }
     },
 
