@@ -115,13 +115,42 @@ function handlePostback(req, res) {
     createBot(req.body.appUser).say(`You said: ${postback.action.text} (payload was: ${postback.action.payload})`)
         .then(() => res.end());
 }
+/*
+app.post('/webhook', function(req, res, next) {
+    const trigger = req.body.trigger;
 
-//Martti: handle postback payloads as a normal message 
-function handlePostbackAndMessages(req, res) {
+    switch (trigger) {
+        case 'message:appUser':
+            handleMessages(req, res);
+            break;
+
+        case 'postback':
+            handlePostback(req, res);
+            break;
+
+        default:
+            console.log('Ignoring unknown webhook trigger:', trigger);
+    }
+});
+*/
+app.post('/webhook', function(req, res, next) {
+    var isPostback = req.body.trigger == "postback";
     var msg = '';
 
-    const postback = req.body.postbacks[0];
-    if (!postback || !postback.action) {
+    const appUser = req.body.appUser;
+    const userId = appUser.userId || appUser._id;
+    const stateMachine = new StateMachine({
+        script,
+        bot: new BetterSmoochApiBot({
+            name,
+            avatarUrl,
+            lock,
+            store,
+            userId
+        })
+    });    
+
+    if(!isPostback) {
         const messages = req.body.messages.reduce((prev, current) => {
             if (current.role === 'appUser') {
                 prev.push(current);
@@ -129,19 +158,15 @@ function handlePostbackAndMessages(req, res) {
             return prev;
         }, []);
 
-        if (messages.length === 0) {
+        if (messages.length === 0 && !isTrigger) {
             return res.end();
         }
+
         msg = messages[0];
     } else {
         msg = req.body.postbacks[0];
-        msg.text = msg.action.payload;
+        msg.text = msg.action.text;
     }
-
-    const stateMachine = new StateMachine({
-        script,
-        bot: createBot(req.body.appUser)
-    });
 
     stateMachine.receiveMessage(msg)
         .then(() => res.end())
@@ -150,25 +175,6 @@ function handlePostbackAndMessages(req, res) {
             console.error(err.stack);
             res.end();
         });
-
-}
-
-app.post('/webhook', function(req, res, next) {
-    const trigger = req.body.trigger;
-
-    switch (trigger) {
-        case 'message:appUser':
-        case 'postback': //Martti: let be postbacks received and handled as normal messages to bot
-            handlePostbackAndMessages(req, res);
-            break;
-
-        /*case 'postback':
-            handlePostback(req, res);
-            break;*/
-
-        default:
-            console.log('Ignoring unknown webhook trigger:', trigger);
-    }
 });
 
 var server = app.listen(process.env.PORT || 8000, function() {
