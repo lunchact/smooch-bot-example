@@ -9,6 +9,27 @@ const app = require('../app');
 const script = require('../script');
 const SmoochCore = require('smooch-core');
 const jwt = require('../jwt');
+const fs = require('fs');
+
+class BetterSmoochApiBot extends SmoochApiBot {
+    constructor(options) {
+        super(options);
+    }
+
+    sendImage(imageFileName) {
+        const api = this.store.getApi();
+        let message = Object.assign({
+            role: 'appMaker'
+        }, {
+            name: this.name,
+            avatarUrl: this.avatarUrl
+        });
+        var real = fs.realpathSync(imageFileName);
+        let source = fs.readFileSync(real);
+
+        return api.conversations.uploadImage(this.userId, source, message);
+    }
+}
 
 const name = 'SmoochBot';
 const avatarUrl = 'https://s.gravatar.com/avatar/f91b04087e0125153623a3778e819c0a?s=80';
