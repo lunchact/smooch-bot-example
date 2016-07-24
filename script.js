@@ -10,8 +10,19 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say('Hello, welcome to CatBots.lol \n What would you like to do today? %[Post a picture](postback:postpic1) %[See some cakes](postback:seecake1)')
-                .then(() => 'start');
+            return bot.say('Hello, welcome to CatBots.lol')
+                .then(() => 'askToDo');
+        }
+    },
+
+    askToDo: {
+        prompt: (bot) => bot.say('What would you like to do today? %[Post a picture](postback:postpic1) %[See some cakes](postback:seecake1)'),
+        receive: (bot, message) => {
+            const name = message.text;
+            return bot.setProp('name', name)
+                .then(() => bot.say(`Great! I'll call you ${name}
+Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
+                .then(() => 'finish');
         }
     },
 
