@@ -65,12 +65,21 @@ module.exports = new Script({
             const txt = message.text;
             switch (txt) {
                 case "postcomment1":
-                    return bot.say('Ok! You can send it here')
-                        .then(() => 'thanksComment');
+                    return bot.say()
+                        .then(() => 'getComment');
                 case "sendfeedback1":
                     return bot.say('Great! We’d love to hear from you!')
                         .then(() => 'askName');
             }
+        }
+    },
+
+    getComment: {
+        prompt: (bot) => bot.say('Ok! You can send it here'),
+        receive: (bot, message) => {
+            const comment = message.text;
+            return bot.setProp('comment', comment)
+                .then(() => 'thanksComment');
         }
     },
 
