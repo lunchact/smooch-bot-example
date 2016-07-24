@@ -22,6 +22,8 @@ module.exports = new Script({
             switch (txt) {
                 case "postpic1":
                     //put action here for postpic1 if there is any
+                    return bot.say('![](http://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1273545_8.jpg)')
+                        .then(() => 'morecake1');
                 case "seecake1":
                     return bot.say('![](http://www.fnstatic.co.uk/images/source/article/omg-chocolate-cake-1_2.jpg)')
                         .then(() => 'morecake1');
