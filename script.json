@@ -1,6 +1,6 @@
 {
     "HELLO": "Hello, welcome to CatBots.101\nWhat would you like to do today? %[Post a picture](postback:postpicture) %[See some cakes](postback:seecakes)",
-    "SEE SOME CAKES": "Sample cake: [esther](https://raw.githubusercontent.com/esthercrawford/smooch-bot-example/master/img/esther.jpg) %[More](postback:more1) %[Something else](postback:somethingelse1)",
+    "SEE SOME CAKES": "Sample cake: ![esther](https://raw.githubusercontent.com/esthercrawford/smooch-bot-example/master/img/esther.jpg) %[More](postback:more1) %[Something else](postback:somethingelse1)",
     "MORE": "[cake1](https://raw.githubusercontent.com/esthercrawford/smooch-bot-example/master/img/esther.jpg) %[More](postback:more2) %[Something else](postback:somethingelse2)",
     "GOOGLE": "Open Google: %[Search Google](http://google.com)",
     "CONNECT ME": "",
