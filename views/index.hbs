@@ -22,9 +22,8 @@
 </head>
 
 <body >
-<div align="center">Say something else</div>
-<div id="mainContainer" style="height:100%; width:100%;"> <p>writing something</p>
-</div>
+<!--div id="mainContainer" style="height:100%; width:100%;"> <p>writing something</p>
+</div-->
 
 
 <div style="height:100%; width:100%;" id="fullScreenChat"> </div>
@@ -38,16 +37,21 @@
       	appToken: '{{appToken}}',
         embedded: true,
       	emailCaptureEnabled: true,
-      	});
+        customText: {
+          headerText: 'How can I be of service?',
+          inputPlaceholder: 'Type a message...',
+          sendButtonText: 'Send',
+        }
+      });
 
     </script>
     <script>
 
-      var mainContainer = document.getElementById('mainContainer');
+      //var mainContainer = document.getElementById('mainContainer');
       var fullScreenChat = document.getElementById("fullScreenChat");
 
         /* -- Hiding the main container -- */
-        mainContainer.style.display = 'none'
+        //mainContainer.style.display = 'none'
 
         /* -- Displaying the main container -- */
         fullScreenChat.style.display = 'block'
@@ -58,7 +62,7 @@
     <script>
       //modify css classes
       //hide top header
-      $("#sk-header").hide();
+      //$("#sk-header").hide();
       //change bubble color
       /*
       $('.sk-row').removeClass('sk-row').addClass('sk-row');
