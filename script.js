@@ -16,7 +16,7 @@ module.exports = new Script({
     },*/
 
     start: {
-        prompt: (bot) => bot.say('What would you like to do today? %[Post a picture](reply:postpic1) %[See some cakes](reply:seecake1)'),
+        prompt: (bot) => bot.say('What would you like to do today? %[Post a picture](postback:postpic1) %[See some cakes](postback:seecake1)'),
         receive: (bot, message) => {
             const txt = message.text;
             switch (txt) {
@@ -31,7 +31,7 @@ module.exports = new Script({
         }
     },
 
-    postpic1: {
+    /*postpic1: {
         receive: (bot) => {
             return bot.say('![](http://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1273545_8.jpg)')
                         .then(() => 'morecake1');
@@ -43,7 +43,7 @@ module.exports = new Script({
             return bot.say('![](http://www.fnstatic.co.uk/images/source/article/omg-chocolate-cake-1_2.jpg)')
                         .then(() => 'morecake1');
         }
-    },
+    },*/
 
     morecake1: {
         prompt: (bot) => bot.say('%[More](postback:more1) %[Something else](postback:somethingelse1)'),
