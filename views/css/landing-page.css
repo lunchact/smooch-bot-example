@@ -16,7 +16,7 @@ html {
   box-shadow: 0 0 0 #fff !important;
   border-radius: 14px !important;
   padding: 12px 18px !important;
-  width: 300px;
+
 }
 
 .sk-from{
@@ -96,8 +96,8 @@ height: calc(100% - 120px) !important;
 /* Change the color of the sender*/
 
 .sk-row.sk-left-row .sk-msg-wrapper .sk-msg{
-  background-color: palegreen !important;
-  width: 300px !important;
+
+  background-color: #eee !important;
 }
 
 /* Increase the size of the header */
@@ -107,6 +107,3 @@ height: calc(100% - 120px) !important;
   font-size: 30px !important;
   padding-top: 15px !important;
 }
-
-/* Hide Intro Section*/
-.sk-intro-section{display:none;}
