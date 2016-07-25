@@ -22,8 +22,6 @@
 </head>
 
 <body >
-<!--div id="mainContainer" style="height:100%; width:100%;"> <p>writing something</p>
-</div-->
 
 
 <div style="height:100%; width:100%;" id="fullScreenChat"> </div>
@@ -32,52 +30,26 @@
     <script src="https://cdn.smooch.io/smooch.min.js"></script>
 
     <script>
-    /* -- Initialise Smooch -- */
-      Smooch.init({
-      	appToken: '{{appToken}}',
-        embedded: true,
-      	emailCaptureEnabled: true,
-        customText: {
-          headerText: 'How can I be of service?',
-          inputPlaceholder: 'Type a message...',
-          sendButtonText: 'Send',
-        }
-      });
-
-    </script>
-    <script>
-
-      //var mainContainer = document.getElementById('mainContainer');
-      var fullScreenChat = document.getElementById("fullScreenChat");
-
-        /* -- Hiding the main container -- */
-        //mainContainer.style.display = 'none'
+        //uncomment to enable fresh chat history - clears data stored in browser
+        //localStorage.clear();
+        /* -- Initialise Smooch -- */
+        Smooch.init({
+      	  appToken: '{{appToken}}',
+          embedded: true,
+      	  emailCaptureEnabled: true,
+          customText: {
+            headerText: 'How can I be of service?',
+            inputPlaceholder: 'Say hi...',
+            sendButtonText: 'Send',
+          }
+        });
+        var fullScreenChat = document.getElementById("fullScreenChat");
 
         /* -- Displaying the main container -- */
         fullScreenChat.style.display = 'block'
         Smooch.render(fullScreenChat);
 
     </script>
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script-->
-    <script>
-      //modify css classes
-      //hide top header
-      //$("#sk-header").hide();
-      //change bubble color
-      /*
-      $('.sk-row').removeClass('sk-row').addClass('sk-row');
-      $('.sk-left-row').removeClass('sk-left-row').addClass('sk-left-row');
-      $('.sk-msg-wrapper').removeClass('sk-msg-wrapper').addClass('sk-msg-wrapper');
-      $('.sk-msg').removeClass('sk-msg').addClass('sk-msg');
-
-      $(".sk-row").css( "background-color", "yellow" );
-      $(".sk-left-row").css( "background-color", "yellow" );
-      $(".sk-msg-wrapper").css( "background-color", "yellow" );
-      $(".sk-msg").css( "background-color", "yellow" );
-      */
-    </script>
-
-
 </body>
 
 </html>
