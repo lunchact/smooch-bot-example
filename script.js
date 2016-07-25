@@ -8,14 +8,14 @@ module.exports = new Script({
         receive: () => 'processing'
     },
 
-    start: {
+    /*start: {
         receive: (bot) => {
             return bot.say('Hello, welcome to CatBots.lol')
                 .then(() => 'askToDo');
         }
-    },
+    },*/
 
-    askToDo: {
+    start: {
         prompt: (bot) => bot.say('What would you like to do today? %[Post a picture](postback:postpic1) %[See some cakes](postback:seecake1)'),
         receive: (bot, message) => {
             const txt = message.text;
