@@ -90,10 +90,7 @@ height: calc(100% - 120px) !important;
 /* -------- 10/ Make the background white --------- */
 
 #sk-container #sk-wrapper {
-  background-color: #fff !important;
-}
-#sk-container #sk-wrapper .sk-msg {
-  background-color: #ff3333;
+  background-color: #ff3333 !important;
 }
 
 /* Change the color of the sender*/
