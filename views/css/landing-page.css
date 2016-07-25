@@ -16,7 +16,7 @@ html {
   box-shadow: 0 0 0 #fff !important;
   border-radius: 14px !important;
   padding: 12px 18px !important;
-
+  width: 200px;
 }
 
 .sk-from{
@@ -90,14 +90,14 @@ height: calc(100% - 120px) !important;
 /* -------- 10/ Make the background white --------- */
 
 #sk-container #sk-wrapper {
-  background-color: #ff3333 !important;
+  background-color: #fff !important;
 }
 
 /* Change the color of the sender*/
 
 .sk-row.sk-left-row .sk-msg-wrapper .sk-msg{
 
-  background-color: #eee !important;
+  background-color: #ff3333 !important;
 }
 
 /* Increase the size of the header */
