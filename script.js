@@ -16,18 +16,20 @@ module.exports = new Script({
     },*/
 
     start: {
-        prompt: (bot) => bot.say('What would you like to do today? %[Post a picture](reply:postpic1) %[See some cakes](reply:seecake1)'),
-        receive: (bot, message) => {
-            const txt = message.text;
-            switch (txt) {
-                case "postpic1":
-                    //put action here for postpic1 if there is any
-                    return bot.say('![](http://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1273545_8.jpg)')
+        prompt: (bot) => bot.say('What would you like to do today? %[Post a picture](reply:postpic1) %[See some cakes](reply:seecake1)')
+    },
+
+    postpic1: {
+        receive: (bot) => {
+            return bot.say('![](http://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1273545_8.jpg)')
                         .then(() => 'morecake1');
-                case "seecake1":
-                    return bot.say('![](http://www.fnstatic.co.uk/images/source/article/omg-chocolate-cake-1_2.jpg)')
+        }
+    },
+
+    seecake1: {
+        receive: (bot) => {
+            return bot.say('![](http://www.fnstatic.co.uk/images/source/article/omg-chocolate-cake-1_2.jpg)')
                         .then(() => 'morecake1');
-            }
         }
     },
 
