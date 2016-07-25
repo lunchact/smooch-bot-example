@@ -16,14 +16,12 @@ html {
   box-shadow: 0 0 0 #fff !important;
   border-radius: 14px !important;
   padding: 12px 18px !important;
-  width: 400px;
 }
 
 .sk-from{
   font-size: 16px !important;
   line-height: 10px !important;
   font-weight: 400 !important;
-  width: 400px;
 }
 
 /* -------- Centering the text --------- */
@@ -97,8 +95,8 @@ height: calc(100% - 120px) !important;
 /* Change the color of the sender*/
 
 .sk-row.sk-left-row .sk-msg-wrapper .sk-msg{
-
   background-color: green !important;
+  width: 300px !important;
 }
 
 /* Increase the size of the header */
