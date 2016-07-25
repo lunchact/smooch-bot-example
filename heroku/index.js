@@ -136,24 +136,6 @@ function handlePostback(req, res) {
     createBot(req.body.appUser).say(`You said: ${postback.action.text} (payload was: ${postback.action.payload})`)
         .then(() => res.end());
 }
-/*
-app.post('/webhook', function(req, res, next) {
-    const trigger = req.body.trigger;
-
-    switch (trigger) {
-        case 'message:appUser':
-            handleMessages(req, res);
-            break;
-
-        case 'postback':
-            handlePostback(req, res);
-            break;
-
-        default:
-            console.log('Ignoring unknown webhook trigger:', trigger);
-    }
-});
-*/
 
 app.post('/webhook', function(req, res, next) {
     var isPostback = req.body.trigger == "postback";
@@ -171,7 +153,7 @@ app.post('/webhook', function(req, res, next) {
             userId
         })
     });    
-
+    
     if(!isPostback) {
         const messages = req.body.messages.reduce((prev, current) => {
             if (current.role === 'appUser') {

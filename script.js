@@ -31,20 +31,6 @@ module.exports = new Script({
         }
     },
 
-    /*postpic1: {
-        receive: (bot) => {
-            return bot.say('![](http://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1273545_8.jpg)')
-                        .then(() => 'morecake1');
-        }
-    },
-
-    seecake1: {
-        receive: (bot) => {
-            return bot.say('![](http://www.fnstatic.co.uk/images/source/article/omg-chocolate-cake-1_2.jpg)')
-                        .then(() => 'morecake1');
-        }
-    },*/
-
     morecake1: {
         prompt: (bot) => bot.say('%[More](postback:more1) %[Something else](postback:somethingelse1)'),
         receive: (bot, message) => {
