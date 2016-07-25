@@ -60,10 +60,15 @@
       //hide top header
       $("#sk-header").hide();
       //change bubble color
-      $(".sk-row").css( "background-color", "yellow !important" );
-      $(".sk-left-row").css( "background-color", "yellow !important" );
-      $(".sk-msg-wrapper").css( "background-color", "yellow !important" );
-      $(".sk-msg").css( "background-color", "yellow !important" );
+      $('.sk-row').removeClass('sk-row').addClass('sk-row');
+      $('.sk-left-row').removeClass('sk-left-row').addClass('sk-left-row');
+      $('.sk-msg-wrapper').removeClass('sk-msg-wrapper').addClass('sk-msg-wrapper');
+      $('.sk-msg').removeClass('sk-msg').addClass('sk-msg');
+
+      $(".sk-row").css( "background-color", "yellow" );
+      $(".sk-left-row").css( "background-color", "yellow" );
+      $(".sk-msg-wrapper").css( "background-color", "yellow" );
+      $(".sk-msg").css( "background-color", "yellow" );
     </script>
 
 
