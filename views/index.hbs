@@ -23,6 +23,8 @@
 
 <body >
 
+<div id="mainContainer" style="height:100%; width:100%;"> <p>writing something</p>
+</div>
 
 <div style="height:100%; width:100%;" id="fullScreenChat"> </div>
 
@@ -35,15 +37,13 @@
         /* -- Initialise Smooch -- */
         Smooch.init({
       	  appToken: '{{appToken}}',
-          embedded: true,
-      	  emailCaptureEnabled: true,
-          customText: {
-            headerText: 'How can I be of service?',
-            inputPlaceholder: 'Say hi...',
-            sendButtonText: 'Send'
-          }
+          embedded: true
         });
+        var mainContainer = document.getElementById('mainContainer');
         var fullScreenChat = document.getElementById("fullScreenChat");
+
+        /* -- Hiding the main container -- */
+        mainContainer.style.display = 'none';
 
         /* -- Displaying the main container -- */
         fullScreenChat.style.display = 'block'
