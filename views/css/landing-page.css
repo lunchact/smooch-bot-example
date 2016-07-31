@@ -97,7 +97,7 @@ height: calc(100% - 120px) !important;
 
 .sk-row.sk-left-row .sk-msg-wrapper .sk-msg{
 
-  background-color: bisque !important;
+  background-color: #eee !important;
 }
 
 /* Increase the size of the header */
