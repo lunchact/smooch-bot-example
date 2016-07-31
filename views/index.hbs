@@ -18,7 +18,9 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+
 </head>
 
 <body >
@@ -26,30 +28,51 @@
 <div id="mainContainer" style="height:100%; width:100%;"> <p>writing something</p>
 </div>
 
-<div style="height:100%; width:100%;" id="fullScreenChat"> </div>
 
+<div style="height:100%; width:100%;" id="fullScreenChat"> </div>
 
     <script src="https://cdn.smooch.io/smooch.min.js"></script>
 
     <script>
-        //uncomment to enable fresh chat history - clears data stored in browser
-        //localStorage.clear();
-        /* -- Initialise Smooch -- */
-        Smooch.init({
-      	  appToken: '{{appToken}}',
-          embedded: true
-        });
-        var mainContainer = document.getElementById('mainContainer');
-        var fullScreenChat = document.getElementById("fullScreenChat");
+
+    /* -- Initialise Smooch -- */
+      Smooch.init({
+      	appToken: '{{appToken}}',
+        embedded: true,
+      	emailCaptureEnabled: true,
+      	})
+    /* -- Render Smooch in full screen -- */
+    /*  var myContainer = document.getElementsByClassName("full-screen-msg");
+      Smooch.render(myContainer[0])*/
+
+    </script>
+    <script>
+
+      var mainContainer = document.getElementById('mainContainer');
+      var fullScreenChat = document.getElementById("fullScreenChat");
+
+      openchat();
+
+
+
+      function openchat() {
 
         /* -- Hiding the main container -- */
-        mainContainer.style.display = 'none';
+        mainContainer.style.display = 'none'
 
         /* -- Displaying the main container -- */
         fullScreenChat.style.display = 'block'
         Smooch.render(fullScreenChat);
+      };
 
     </script>
+
+    <script>
+
+
+    </script>
+
+
 </body>
 
 </html>
