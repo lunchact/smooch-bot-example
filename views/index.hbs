@@ -18,7 +18,7 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -31,6 +31,56 @@
 
 <div style="height:100%; width:100%;" id="fullScreenChat"> </div>
 
+<!-- Create the opening/closing button -->
+
+<!-- Background of the button -->
+
+<div class="BtnWrapper"
+     style="position:fixed;
+            z-index:9999;
+            bottom:40px;
+            right:16px;
+            width:58px;
+            height:58px;
+            border-radius:50%;
+            cursor:pointer;
+            box-shadow:0px 2px 5px 0px rgba(0, 0, 0, 0.26);
+            overflow:hidden;">
+
+<!-- open chat button -->
+
+<div id="openBtnDiv"
+     style="width:58px;
+            height:58px;
+            left: 0px;
+            top: 0px;
+            border-radius: 50%;
+            transition: opacity 0.4s cubic-bezier(0.55, 0, 0.1, 1), transform 0.4s cubic-bezier(0.55, 0, 0.1, 1); transform: rotate(0deg);-->
+            opacity: 1;
+            background-color: rgb(234, 228, 244);">
+      <a id="openBtn">
+        <img style=" width:50px;height:50px; position:absolute;top:5px;left:5px;" src="images/smooch.png"></img>
+      </a>
+</div>
+
+<!-- Back button -->
+
+<div id="closeBtnDiv"
+     style="width:0px;
+            height:0px;
+            position:absolute;
+            left: 0px;
+            top: 0px;
+            border-radius: 50%;
+            transition: opacity 0.4s cubic-bezier(0.55, 0, 0.1, 1), transform 0.4s cubic-bezier(0.55, 0, 0.1, 1);
+            transform: rotate(180deg);
+            opacity: 1;
+            background-color: rgb(64, 51, 81);">
+      <a id="closeBtn">
+            <img style="position:absolute;top:19px;left:19px;" src="images/close_button.png"></img></div>
+      </a>
+
+</div>
     <script src="https://cdn.smooch.io/smooch.min.js"></script>
 
     <script>
@@ -48,12 +98,50 @@
     </script>
     <script>
 
+      var openBtn = document.getElementById('openBtn');
+      var closeBtn = document.getElementById('closeBtn');
       var mainContainer = document.getElementById('mainContainer');
       var fullScreenChat = document.getElementById("fullScreenChat");
+      var openBtnDiv = document.getElementById("openBtnDiv");
+      var closeBtnDiv = document.getElementById("closeBtnDiv");
 
-      openchat();
+      openBtn.onclick = function() {
+
+        openBtnDiv.style.width = '0px';
+        openBtnDiv.style.height= '0px';
+
+        closeBtnDiv.style.width = '58px';
+        closeBtnDiv.style.height = '58px';
+
+        //Hide the open button
+        //openBtnDiv.setAttribute('class', 'hiddenBtnDiv');
+
+        //Show the Close button
+        //closeBtnDiv.setAttribute('class', 'visibleBtnDiv');
+
+        openchat();
+        return false;
+
+      };
+
+      closeBtn.onclick = function() {
+
+        closeBtnDiv.style.width = '0px';
+        closeBtnDiv.style.height= '0px';
+
+        openBtnDiv.style.width = '58px';
+        openBtnDiv.style.height = '58px';
 
 
+        //Hide the open button
+        //openBtnDiv.setAttribute('class', 'visibleBtnDiv');
+
+        //Show the Close button
+        //closeBtnDiv.setAttribute('class', 'hiddenBtnDiv');
+
+        closechat();
+        return false;
+      };
 
       function openchat() {
 
@@ -65,6 +153,12 @@
         Smooch.render(fullScreenChat);
       };
 
+      function closechat() {
+
+        /* -- Displaying the main container -- */
+        mainContainer.style.display = 'block'
+        fullScreenChat.style.display = 'none'
+      }
     </script>
 
     <script>
